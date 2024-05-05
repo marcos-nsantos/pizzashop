@@ -1,4 +1,5 @@
 import { NavLink } from "@/components/nav-link.tsx";
+import { ThemeToggle } from "@/components/theme/theme-toggle.tsx";
 import { Separator } from "@/components/ui/separator.tsx";
 import { Home, Pizza, UtensilsCrossed } from "lucide-react";
 
@@ -20,6 +21,10 @@ export function Header() {
             Pedidos
           </NavLink>
         </nav>
+
+        <div className="ml-auto flex items-center gap-2">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { NotFound } from "@/pages/404.tsx";
 import { AppLayout } from "@/pages/_layouts/app.tsx";
 import { AuthLayout } from "@/pages/_layouts/auth.tsx";
 import { Dashboard } from "@/pages/app/dashboard/dashboard.tsx";
@@ -10,6 +11,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",

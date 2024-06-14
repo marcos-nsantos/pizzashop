@@ -1,16 +1,18 @@
 import { api } from "@/lib/axios.ts";
 
-interface GetManagedResponse {
-  id: number;
+interface GetManagedRestaurantResponse {
+  id: string;
   name: string;
-  email: string;
-  phone: string | null;
-  role: string;
   createdAt: Date | null;
   updatedAt: Date | null;
+  description: string | null;
+  managerId: string | null;
 }
 
 export async function getManagedRestaurant() {
-  const response = await api.get<GetManagedResponse>("/managed-restaurant");
+  const response = await api.get<GetManagedRestaurantResponse>(
+    "/managed-restaurant",
+  );
+
   return response.data;
 }

@@ -9,8 +9,15 @@ import {
 import { OrderTableFilters } from "@/pages/app/orders/order-table-filters.tsx";
 import { OrderTableRow } from "@/pages/app/orders/order-table-row.tsx";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import { getOrders } from "@/api/get-orders.ts";
 
 export function Orders() {
+  const { data: result } = useQuery({
+    queryKey: ["orders"],
+    queryFn: getOrders,
+  });
+
   return (
     <>
       <Helmet title="Pedidos" />
@@ -35,9 +42,10 @@ export function Orders() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Array.from({ length: 10 }).map((_, i) => {
-                  return <OrderTableRow key={i} />;
-                })}
+                {result &&
+                  result.orders.map((order) => {
+                    return <OrderTableRow key={order.orderId} order={order} />;
+                  })}
               </TableBody>
             </Table>
           </div>

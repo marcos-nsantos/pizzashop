@@ -6,12 +6,13 @@ import { Orders } from "@/pages/app/orders/orders.tsx";
 import { SignIn } from "@/pages/auth/sign-in.tsx";
 import { SignUp } from "@/pages/auth/sign-up.tsx";
 import { createBrowserRouter } from "react-router-dom";
+import { Error } from "@/pages/error.tsx";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement: <NotFound />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -36,5 +37,9 @@ export const router = createBrowserRouter([
         element: <SignUp />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);

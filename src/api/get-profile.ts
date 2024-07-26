@@ -1,7 +1,7 @@
 import { api } from "@/lib/axios.ts";
 
-interface GetProfileResponse {
-  id: number;
+export interface GetProfileResponse {
+  id: string;
   name: string;
   email: string;
   phone: string | null;

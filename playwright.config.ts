@@ -2,6 +2,7 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./test",
+  testMatch: /.*\.e2e-spec\.ts$/,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -15,12 +16,12 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "http://127.0.0.1:50789",
+    baseURL: "http://localhost:50789",
   },
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "npm dev:test",
+    command: "npm run dev:test",
     url: "http://localhost:50789",
     reuseExistingServer: !process.env.CI,
   },
